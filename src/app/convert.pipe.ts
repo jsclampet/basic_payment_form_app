@@ -5,11 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ConvertPipe implements PipeTransform {
 
-  transform(value: any, targetUnits: string): unknown {
+  transform(value: any, targetUnits: string): any {
+    //if nothing is entered in input, then do show empty string, aka nothing
+      //this avoids "NaN" output
     if (!value) {
       return '';
     }
 
+    //
     switch (targetUnits){
       case 'km': // kilometers
         return value * 1.60934;
